@@ -1,9 +1,15 @@
 const form = document.querySelector(".form");
+const nameUser = document.querySelector("#name");
+const secondName = document.querySelector("#secondName");
+const email = document.querySelector("#email");
+const phone = document.querySelector("#phone");
+const agree = document.querySelector("#agree");
+
 form.addEventListener("submit", (event) => {
   // Предотвращает действие браузера по умолчанию. В данном случае — отправку формы
   // https://learn.javascript.ru/default-browser-action
   event.preventDefault();
-fetch('https://polinashneider.space/user', {
+  fetch('https://polinashneider.space/user', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -11,11 +17,11 @@ fetch('https://polinashneider.space/user', {
                 'Authorization': 'Bearer: sevrukekaterina2511'
             },
             body: JSON.stringify({
-                name: "Екатерина",
-                secondName: "Sevruk",
-                email: "sevruk@gmail.com",
-                phone: 79990009900,
-                agree: true
+                name: `${nameUser.value}`,
+                secondName: `${secondName.value}`,
+                email: `${email.value}`,
+                phone: `${phone.value}`,
+                agree: `${agree.value}`,
             })
         })
         .then((result) => {
